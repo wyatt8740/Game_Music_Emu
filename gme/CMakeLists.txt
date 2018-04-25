@@ -77,6 +77,7 @@ if (USE_GME_GBS)
     set(libgme_SRCS ${libgme_SRCS}
                 Gb_Apu.cpp
                 Gb_Cpu.cpp
+                Gbs_Cpu.cpp
                 Gb_Oscs.cpp
                 Gbs_Emu.cpp
                 Gbs_Core.cpp
