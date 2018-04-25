@@ -10,6 +10,7 @@ set(libgme_SRCS Blip_Buffer.cpp
                 Effects_Buffer.cpp
                 Fir_Resampler.cpp
                 Resampler.cpp
+                Rom_Data.cpp
                 gme.cpp
                 Gme_Loader.cpp
                 Gme_File.cpp
