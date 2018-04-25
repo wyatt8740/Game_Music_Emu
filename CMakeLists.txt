@@ -2,6 +2,8 @@
 project(libgme)
 
 include (CheckCXXCompilerFlag)
+SET ( CMAKE_CXX_FLAGS "-Wl,-z,defs" CACHE STRING "compile flags" FORCE)
+
 
 # When version is changed, also change the one in gme/gme.h to match
 set(GME_VERSION 0.6.2 CACHE INTERNAL "libgme Version")
@@ -50,6 +52,10 @@ endif()
 
 if (NOT DEFINED USE_GME_VGM)
     SET(USE_GME_VGM 1 CACHE BOOL "Enable Sega VGM/VGZ music emulation")
+endif()
+
+if (NOT DEFINED USE_GENS)
+  SET(USE_GENS 0 CACHE BOOL "Enable Gens core for VGM emulation (less accurate, faster, disabled by default)")
 endif()
 
 if (NOT DEFINED USE_GME_SGC)
