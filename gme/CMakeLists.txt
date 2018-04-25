@@ -152,6 +152,7 @@ if (USE_GME_SPC)
                 higan/dsp/SPC_DSP.cpp
                 higan/smp/timing.cpp
                 higan/smp/memory.cpp
+                higan/processor/spc700/spc700.cpp
 #                Snes_Spc.cpp
 #                Spc_Cpu.cpp
 #                Spc_Dsp.cpp
