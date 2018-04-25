@@ -96,9 +96,9 @@ if(LIBGME_SWITCH_FALLTHROUGH)
      set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wimplicit-fallthrough=0")
 endif()
 
+include_directories(fex)
+
+
 # Shared library defined here
 add_subdirectory(gme)
 
-# EXCLUDE_FROM_ALL adds build rules but keeps it out of default build
-add_subdirectory(player EXCLUDE_FROM_ALL)
-add_subdirectory(demo EXCLUDE_FROM_ALL)

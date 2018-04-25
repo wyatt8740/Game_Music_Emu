@@ -1,9 +1,11 @@
+include_directories(../fex)
+
 # List of source files required by libgme and any emulators
 # This is not 100% accurate (Fir_Resampler for instance) but
 # you'll be OK.
 set(libgme_SRCS Blip_Buffer.cpp
                 Classic_Emu.cpp
-                Data_Reader.cpp
+#                Data_Reader.cpp
                 Dual_Resampler.cpp
                 Effects_Buffer.cpp
                 Fir_Resampler.cpp
@@ -115,11 +117,15 @@ endif()
 
 if (USE_GME_SPC)
     set(libgme_SRCS ${libgme_SRCS}
-                Snes_Spc.cpp
-                Spc_Cpu.cpp
-                Spc_Dsp.cpp
+                Spc_Emu.h
                 Spc_Emu.cpp
                 Spc_Filter.cpp
+                Spc_Sfm.cpp
+#                Snes_Spc.cpp
+#                Spc_Cpu.cpp
+#                Spc_Dsp.cpp
+#                Spc_Emu.cpp
+#                Spc_Filter.cpp
         )
 endif()
 
@@ -128,8 +134,10 @@ if (USE_GME_VGM)
               # Sms_Apu.cpp included earlier
               # Ym2612_Emu.cpp included earlier
                 Vgm_Emu.cpp
-                Vgm_Emu_Impl.cpp
-                Ym2413_Emu.cpp
+                Vgm_Core.cpp
+#                Vgm_Emu.cpp
+#                Vgm_Emu_Impl.cpp
+#                Ym2413_Emu.cpp
         )
 endif()
 
