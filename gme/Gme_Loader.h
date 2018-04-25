@@ -73,11 +73,7 @@ public:
 
 // Files are read with GME_FILE_READER. Default supports gzip if zlib is available.
 #ifndef GME_FILE_READER
-	#ifdef HAVE_ZLIB_H
-		#define GME_FILE_READER Gzip_File_Reader
-	#else
-		#define GME_FILE_READER Std_File_Reader
-	#endif
+	#define GME_FILE_READER Std_File_Reader
 #elif defined (GME_FILE_READER_INCLUDE)
 	#include GME_FILE_READER_INCLUDE
 #endif

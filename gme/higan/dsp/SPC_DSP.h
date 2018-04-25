@@ -4,7 +4,7 @@
 #ifndef SPC_DSP_H
 #define SPC_DSP_H
 
-#include "blargg_common.h"
+#include "../../blargg_common.h"
 
 extern "C" { typedef void (*dsp_copy_func_t)( unsigned char** io, void* state, size_t ); }
 

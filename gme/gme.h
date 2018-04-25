@@ -150,7 +150,8 @@ void gme_equalizer( const gme_t*, gme_equalizer_t* out );
 /* Changes frequency equalizer parameters */
 void gme_set_equalizer( gme_t*, gme_equalizer_t const* eq );
 
-
+/* stub to avoid ABI breakage, I think --Wyatt */
+void gme_enable_accuracy( gme_t*, int enabled );
 
 /******** Effects processor ********/
 

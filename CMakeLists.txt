@@ -52,6 +52,10 @@ if (NOT DEFINED USE_GME_VGM)
     SET(USE_GME_VGM 1 CACHE BOOL "Enable Sega VGM/VGZ music emulation")
 endif()
 
+if (NOT DEFINED USE_GME_SGC)
+    SET(USE_GME_SGC 1 CACHE BOOL "Enable Sega/Game Gear/Coleco music emulation")
+endif()
+
 if (USE_GME_NSFE AND NOT USE_GME_NSF)
     MESSAGE(" -- NSFE support requires NSF, enabling NSF support. --")
     SET(USE_GME_NSF 1 CACHE BOOL "Enable NES NSF music emulation" FORCE)
@@ -96,7 +100,7 @@ if(LIBGME_SWITCH_FALLTHROUGH)
      set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wimplicit-fallthrough=0")
 endif()
 
-include_directories(fex)
+#include_directories(fex)
 
 
 # Shared library defined here

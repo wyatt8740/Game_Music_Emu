@@ -34,12 +34,31 @@ control of the module. A failed requirement probably indicates a bug in YOUR
 code.
 
 void require( bool expr ); */
+
 #undef  require
 #define require( expr ) assert( expr )
 
-/* Like printf() except output goes to debugging console/file.
+/* Use to provide hints to compiler for optimized code layout in situations where we
+can almost always expect a conditional to go one way or the other.  Should only be
+used in situations where an unexpected branch is truly exceptional though! */
+#undef likely
+#undef unlikely
+#ifdef __GNUC__
+    #define likely( x ) __builtin_expect(x, 1)
+    #define unlikely( x ) __builtin_expect(x, 0)
+#else
+    #define likely( x ) (x)
+    #define unlikely( x ) (x)
+#endif
 
+
+/* Like printf() except output goes to debugging console/file.
 void dprintf( const char format [], ... ); */
+
+// Like printf() except output goes to debug log file. Might be defined to do
+// nothing (not even evaluate its arguments).
+// void debug_printf( const char* format, ... );
+
 
 #ifdef CUSTOM_DPRINTF_FUNCTION
 
@@ -76,6 +95,10 @@ static inline void blargg_dprintf_( const char * fmt, ... )
 	va_end(vl);
 	fputs( error, stderr );
 }
+#undef debug_printf
+#define debug_printf (1) ? (void) 0 : blargg_dprintf_
+
+
 #else
 #include <windows.h>
 static inline void blargg_dprintf_( const char * fmt, ... )
