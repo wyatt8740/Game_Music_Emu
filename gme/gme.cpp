@@ -50,7 +50,7 @@ gme_type_t const* gme_type_list()
 	return gme_type_list_;
 }
 
-const char* gme_identify_header( void const* header )
+BLARGG_EXPORT const char* gme_identify_header( void const* header )
 {
 	switch ( get_be32( header ) )
 	{
