@@ -174,7 +174,7 @@ BLARGG_EXPORT gme_err_t gme_open_file( const char path [], Music_Emu** out, int 
 	return err;
 }
 
-Music_Emu* gme_new_emu( gme_type_t type, int rate )
+BLARGG_EXPORT Music_Emu* gme_new_emu( gme_type_t type, int rate )
 {
 	if ( type )
 	{
@@ -207,9 +207,9 @@ Music_Emu* gme_new_emu( gme_type_t type, int rate )
 	return NULL;
 }
 
-gme_err_t gme_load_file( Music_Emu* gme, const char path [] ) { return gme->load_file( path ); }
+BLARGG_EXPORT gme_err_t gme_load_file( Music_Emu* gme, const char path [] ) { return gme->load_file( path ); }
 
-gme_err_t gme_load_data( Music_Emu* gme, void const* data, long size )
+BLARGG_EXPORT gme_err_t gme_load_data( Music_Emu* gme, void const* data, long size )
 {
 	Mem_File_Reader in( data, size );
 	return gme->load( in );
