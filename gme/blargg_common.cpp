@@ -201,13 +201,17 @@ size_t utf16_decode_char( const blargg_wchar_t * p_source, unsigned * p_out, siz
 	if ( p_source_length == 0 ) return 0;
 	else if ( p_source_length == 1 )
 	{
-		*p_out = p_source[0];
+		memcpy(p_out, &p_source[0], sizeof(blargg_wchar_t*));
+/*		*p_out = p_source[0];*/
 		return 1;
 	}
 	else
 	{
 		size_t retval = 0;
-		unsigned decoded = p_source[0];
+		unsigned decoded = 0;
+/*		unsigned decoded = p_source[0];*/
+		memcpy(&decoded, &p_source[0], sizeof(unsigned));
+
 		if ( decoded != 0 )
 		{
 			retval = 1;
