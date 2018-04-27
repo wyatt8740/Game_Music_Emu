@@ -57,18 +57,16 @@ static byte const* skip_gd3_str( byte const in [], byte const* end )
 	return in;
 }
 
-static byte const* get_gd3_str( byte const* in, byte const* end, char field [] )
+static byte const* get_gd3_str( byte const* in, byte const* end, char* field )
 {
 	byte const* mid = skip_gd3_str( in, end );
-	int len = (int)((mid - in) / 2) - 1;
+	int len = (mid - in) / 2 - 1;
 	if ( len > 0 )
 	{
-        char * in_utf8 = blargg_to_utf8( (blargg_wchar_t *) in );
 		len = min( len, (int) Gme_File::max_field_ );
 		field [len] = 0;
 		for ( int i = 0; i < len; i++ )
-            field [i] = in_utf8 [i];
-        free(in_utf8);
+			field [i] = (in [i * 2 + 1] ? '?' : in [i * 2]); // TODO: convert to utf-8
 	}
 	return mid;
 }
