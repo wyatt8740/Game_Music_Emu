@@ -2,7 +2,8 @@
 project(libgme)
 
 include (CheckCXXCompilerFlag)
-SET ( CMAKE_CXX_FLAGS "-Wl,-z,defs" CACHE STRING "compile flags" FORCE)
+# SET ( CMAKE_CXX_FLAGS "-Wl,-z,defs" CACHE STRING "compile flags" FORCE)
+SET ( CMAKE_CXX_FLAGS "" CACHE STRING "compile flags" FORCE)
 
 
 # When version is changed, also change the one in gme/gme.h to match
@@ -69,7 +70,13 @@ endif()
 
 option(BUILD_SHARED_LIBS "Build shared library (set to OFF for static library)" ON)
 
-option(ENABLE_UBSAN "Enable Undefined Behavior Sanitizer error-checking" ON)
+if (WIN32)
+   option(ENABLE_UBSAN "Enable Undefined Behavior Sanitizer error-checking" OFF)
+ELSE()
+   option(ENABLE_UBSAN "Enable Undefined Behavior Sanitizer error-checking" ON)
+ENDIF()
+
+
 
 # Check for GCC/Clang "visibility" support.
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
