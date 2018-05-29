@@ -82,9 +82,14 @@ endif()
 
 # Less accurate than the other implementation, only one should be defined at a time.
 if (USE_GENS)
-  set(libgme_SRCS ${libgme_SRCS}
+    set(libgme_SRCS ${libgme_SRCS}
                 Ym2612_Emu_Gens.cpp
     )
+else()
+    set(libgme_SRCS ${libgme_SRCS}
+                Ym2612_Emu_MAME.cpp
+        )                    
+endif()
 endif()
 
 # But none are as popular as Sms_Apu
@@ -195,12 +200,37 @@ if (USE_GME_VGM)
     set(libgme_SRCS ${libgme_SRCS}
               # Sms_Apu.cpp included earlier
               # Ym2612_Emu.cpp included earlier
+              # Ym2413_Emu.cpp included eariler
+                dac_control.c
                 Vgm_Emu.cpp
                 Vgm_Core.cpp
-                dac_control.c
-#                Vgm_Emu.cpp
-#                Vgm_Emu_Impl.cpp
-#                Ym2413_Emu.cpp
+                Opl_Apu.cpp
+                #C140 Namco System 2
+                C140_Emu.cpp
+                c140.c
+                #Other
+                # SEGA CD I think?
+                rf5c68.c
+                scd_pcm.c
+                Rf5C68_Emu.cpp
+                Rf5C164_Emu.cpp
+                # SEGA 32x
+                pwm.c
+                Pwm_Emu.cpp
+                #Used by some arcade boards
+                okim6258.c
+                Okim6258_Emu.cpp
+                okim6295.c
+                Okim6295_Emu.cpp
+                k051649.c
+                K051649_Emu.cpp
+                k053260.c
+                K053260_Emu.cpp
+                k054539.c
+                K054539_Emu.cpp
+                qmix.c
+                Qsound_Apu.cpp
+
         )
 endif()
 
@@ -214,47 +244,6 @@ if (USE_GME_SGC)
                 Sgc_Core.cpp
         )
 endif()
-
-# MISC: SHOULD REALLY GO IN THEIR OWN SECTION, BUT I AM TIRED OF FIXING THIS CRAP:
-set(libgme_SRCS ${libgme_SRCS}
-  #C140 Namco System 2
-  C140_Emu.cpp
-  c140.c
-  #Other
-  # sega CD I think?
-  Rf5C68_Emu.cpp
-  rf5c68.c
-  scd_pcm.c
-  Rf5C164_Emu.cpp
-  
-  Pwm_Emu.cpp
-  pwm.c
-  
-  Okim6258_Emu.cpp
-  okim6258.c
-  Okim6295_Emu.cpp
-  okim6295.c
-  
-  K051649_Emu.cpp
-  k051649.c
-  
-  K053260_Emu.cpp
-  k053260.c
-  
-  K054539_Emu.cpp
-  k054539.c
-  
-  Qsound_Apu.cpp
-  qmix.c
-  
-  # And the ones that still escaped my attention
-  # (discovered via some shell script magic):
-  Downsampler.cpp
-  Hes_Apu_Adpcm.cpp
-  Opl_Apu.cpp
-  Sap_Core.cpp
-  Upsampler.cpp
-  )
 
 # These headers are part of the generic gme interface.
 set (EXPORTED_HEADERS gme.h)
