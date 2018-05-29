@@ -215,7 +215,7 @@ BLARGG_EXPORT gme_err_t gme_load_data( Music_Emu* gme, void const* data, long si
 	return gme->load( in );
 }
 
-gme_err_t gme_load_custom( Music_Emu* gme, gme_reader_t func, long size, void* data )
+BLARGG_EXPORT gme_err_t gme_load_custom( Music_Emu* gme, gme_reader_t func, long size, void* data )
 { /* wyatt */
 	Callback_Reader in( func, size, data );
 	return gme->load( in );
