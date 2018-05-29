@@ -173,9 +173,9 @@ if (USE_GME_SAP)
 endif()
 
 if (USE_GME_SPC)
+  if (USE_HIGAN)
     set(libgme_SRCS ${libgme_SRCS}
-                Spc_Emu.h
-                Spc_Emu.cpp
+                Spc_Emu_Higan.cpp
                 Spc_Filter.cpp
                 Spc_Sfm.cpp
                 higan/smp/smp.cpp
@@ -189,7 +189,16 @@ if (USE_GME_SPC)
 #                higan/processor/spc700/instructions.cpp
                 Bml_Parser.cpp
         )
+else()
+    set(libgme_SRCS ${libgme_SRCS}
+                Snes_Spc.cpp
+                Spc_Cpu.cpp
+                Spc_Dsp.cpp
+                Spc_Emu.cpp
+                Spc_Filter.cpp
+        )
 endif()
+endif()                
 
 if (USE_GME_VGM)
     set(libgme_SRCS ${libgme_SRCS}
