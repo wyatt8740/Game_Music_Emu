@@ -60,7 +60,7 @@ if (NOT DEFINED USE_GENS)
 endif()
 
 if (NOT DEFINED USE_HIGAN)
-  SET(USE_GENS 0 CACHE BOOL "Enable Higan core for SPC emulation (more accurate, slower, disabled by default)")
+  SET(USE_HIGAN 0 CACHE BOOL "Enable Higan core for SPC emulation (more accurate, slower, disabled by default)")
 endif()
 
 if (NOT DEFINED USE_GME_SGC)

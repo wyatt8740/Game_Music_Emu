@@ -173,7 +173,7 @@ if (USE_GME_SAP)
 endif()
 
 if (USE_GME_SPC)
-  if (USE_HIGAN)
+if (USE_HIGAN)
     set(libgme_SRCS ${libgme_SRCS}
                 Spc_Emu_Higan.cpp
                 Spc_Filter.cpp
