@@ -59,6 +59,10 @@ if (NOT DEFINED USE_GENS)
   SET(USE_GENS 0 CACHE BOOL "Enable Gens core for VGM emulation (less accurate, faster, disabled by default)")
 endif()
 
+if (NOT DEFINED USE_HIGAN)
+  SET(USE_HIGAN 0 CACHE BOOL "Enable Higan core for SPC emulation (more accurate, slower, disabled by default)")
+endif()
+
 if (NOT DEFINED USE_GME_SGC)
     SET(USE_GME_SGC 1 CACHE BOOL "Enable Sega/Game Gear/Coleco music emulation")
 endif()
@@ -75,8 +79,6 @@ if (WIN32)
 ELSE()
    option(ENABLE_UBSAN "Enable Undefined Behavior Sanitizer error-checking" ON)
 ENDIF()
-
-
 
 # Check for GCC/Clang "visibility" support.
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU"

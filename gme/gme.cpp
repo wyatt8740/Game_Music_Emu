@@ -26,6 +26,7 @@ Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA */
 
 // Default list of all supported game music types (copy this to blargg_config.h
 // if you want to modify it)
+#ifdef USE_HIGAN
 #define GME_TYPE_LIST \
 	gme_ay_type,\
 	gme_gbs_type,\
@@ -40,8 +41,22 @@ Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA */
 	gme_spc_type,\
 	gme_vgm_type,\
 	gme_vgz_type
-
+#else
+#define GME_TYPE_LIST \
+	gme_ay_type,\
+	gme_gbs_type,\
+	gme_gym_type,\
+	gme_hes_type,\
+	gme_kss_type,\
+	gme_nsf_type,\
+	gme_nsfe_type,\
+	gme_sap_type,\
+	gme_sgc_type,\
+	gme_spc_type,\
+	gme_vgm_type,\
+	gme_vgz_type	
 #endif
+#endif	
 
 static gme_type_t const gme_type_list_ [] = { GME_TYPE_LIST, 0 };
 
@@ -64,7 +79,9 @@ BLARGG_EXPORT const char* gme_identify_header( void const* header )
 		case BLARGG_4CHAR('N','E','S','M'):  return "NSF";
 		case BLARGG_4CHAR('N','S','F','E'):  return "NSFE";
 		case BLARGG_4CHAR('S','A','P',0x0D): return "SAP";
+#if USE_HIGAN
         case BLARGG_4CHAR('S','F','M','1'):  return "SFM";
+#endif    
 		case BLARGG_4CHAR('S','G','C',0x1A): return "SGC";
 		case BLARGG_4CHAR('S','N','E','S'):  return "SPC";
 		case BLARGG_4CHAR('V','g','m',' '):  return "VGM";
