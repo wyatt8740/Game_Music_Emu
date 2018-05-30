@@ -80,8 +80,6 @@ ELSE()
    option(ENABLE_UBSAN "Enable Undefined Behavior Sanitizer error-checking" ON)
 ENDIF()
 
-
-
 # Check for GCC/Clang "visibility" support.
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
     OR
