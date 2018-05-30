@@ -132,6 +132,7 @@ if (USE_GME_HES)
                 Hes_Cpu.cpp
                 Hes_Emu.cpp
                 Hes_Core.cpp
+                Hes_Apu_Adpcm.cpp
         )
 endif()
 
